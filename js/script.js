@@ -18,27 +18,34 @@ function obtenerUsuarios() {
        }
        return res.json();
     })
-     .then(usuarios => {
-        usuarios.forEach(({id, age, name, email, phone, company, username, website, adress }) => {
+.then(usuarios => {
+        usuarios.forEach(({name, email, phone, company, username, website }) => {
             const tarjeta = {
-                imagen: id,
                 nombre: name,
                 usuario: username,
-                edad: age,
                 corre: email,
                 telefono: phone,
                 compania: company,
                 sitioweb: website,
-                direccion: adress,
             };
+          /*  usuarios.forEach(usuario => {
+                const img =document.createElement('img');
+                img.src =`assets\img${usuario.id}.jpg`;
+                img.alt = usuario.nombre;
+                img.style.width= '30px';
+                listaUsuarios.appendChild(img);
+                const info = document.createElement('p');
+                info.innerText = `${usuario.age} - ${usuario.adress}`;
+                listaUsuarios.appendChild(info);
+            })*/
             mostrarUsuario(tarjeta);
         }); 
-
         })
          .catch (error => {
             console.error('Error al obtener los datos del usuario:', error);
         });
     } 
+       obtenerUsuarios();
 
     function mostrarUsuario({ imagen, nombre, usuario, edad, correo, telefono, compania, sitioweb, direccion }) {
         const divTarjeta = document.createElement('div');
@@ -59,6 +66,20 @@ function obtenerUsuarios() {
 
     document.addEventListener('DOMContentLoaded', obtenerUsuarios);
 
+    /*function edadAleatoria(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function direccionAleatoria () {
+
+    }
+    function imagenAleatoria(id) {
+        return `assets\img${id}.jpg`;
+    }
+    const usuariosConDatosNuevos = usuarios.map(usuario => ({
+        ...usuario, edad:generarEdadAleatoria(18-65),direccion:generarDireccionAleatoria(),
+        imagen:generarImagenAleatoria(usuario.id),
+    }));
+    console.log(usuariosConDatosNuevos);
 
   /* .then((response) => {
    
