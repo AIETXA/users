@@ -3,11 +3,21 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 20px;
+  
 }
 
 h1 {
   text-align: center;
   color: #333;
+  background-color: red;
 }
 
-
+.tarjeta {
+  background-color: rgb(213, 213, 220);
+  margin: 5px;
+  border-radius: 5px;
+  border: 3px black solid;
+  display: grid;
+  grid-row-start: auto;
+  column-gap: 20px;
+}
